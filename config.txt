@@ -1,0 +1,4 @@
+[config]
+host = http://localhost:5555/jsonrpc
+login = ""
+passwd = ""
