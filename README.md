@@ -69,7 +69,7 @@ Keymaps :
       <td>Stop</td>
     </tr>
     <tr>
-      <td>TAB</td>
+      <td>Tab</td>
       <td>Show OSD</td>
     </tr>
     <tr>
