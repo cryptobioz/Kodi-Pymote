@@ -80,3 +80,8 @@ Keymaps :
   
 </table>
 
+
+Download :
+----------
+
+<a href="http://exadot.fr/files/Kodi-Pymote%20-%20Mac%20OSX.zip">Mac OSX</a>
