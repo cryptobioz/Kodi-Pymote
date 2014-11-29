@@ -1,7 +1,7 @@
 Kodi-Pymote
 ===========
 
-Remote control of Kodi with your desktop. Use your keyboard to control then.
+Remote control of Kodi with your desktop. Use your keyboard to control it.
 
 
 How to use ?
