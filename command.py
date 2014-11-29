@@ -67,6 +67,14 @@ def main(host, login, passwd):
                 # OSD
                 if event.key == K_TAB:
                     xbmc.Input.ShowOSD()
+                # FULLSCREEN
+                if event.key == K_f:
+                    if fullscreen == 0:
+                        fullscreen = 1
+                        xbmc.GUI.SetFullscreen({"fullscreen":True})
+                    else:
+                        fullscreen = 0
+                        xbmc.GUI.SetFullscreen({"fullscreen":False})
 
         screen.blit(background, (0, 0))
         pygame.display.flip()
