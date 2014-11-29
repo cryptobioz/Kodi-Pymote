@@ -23,6 +23,7 @@ def main(host, login, passwd):
     screen.blit(background, (0, 0))
     pygame.display.flip()
     mute = 0
+    fullscreen = 0
     # Boucle d'évènements
     while 1:
         for event in pygame.event.get():
@@ -63,7 +64,9 @@ def main(host, login, passwd):
                 # STOP
                 if event.key == K_s:
                     xbmc.Player.Stop([PLAYER_VIDEO])
-
+                # OSD
+                if event.key == K_TAB:
+                    xbmc.Input.ShowOSD()
 
         screen.blit(background, (0, 0))
         pygame.display.flip()
