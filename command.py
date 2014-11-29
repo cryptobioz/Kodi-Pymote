@@ -64,9 +64,6 @@ def main(host, login, passwd):
                 if event.key == K_s:
                     xbmc.Player.Stop([PLAYER_VIDEO])
 
-                # Subtitles
-                if event.key == K_u:
-                    xbmc.Player.Subtitle({"index":0,"language":"fr"})
 
         screen.blit(background, (0, 0))
         pygame.display.flip()
