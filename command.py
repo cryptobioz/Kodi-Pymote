@@ -10,7 +10,14 @@ def main(host, login, passwd):
     pygame.init()
 
     xbmc = XBMC(host, login, passwd)
-    
+    try: 
+        xbmc.JSONRPC.Ping()
+    except:
+        print "Can't connect to host"
+        exit()
+
+    xbmc.GUI.ShowNotification(title="Kodi-Pymote", message = "Connection established")
+
     screen = pygame.display.set_mode((600, 336))
     pygame.display.set_caption('Remote Command for Kodi/XBMC')
  
