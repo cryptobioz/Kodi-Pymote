@@ -2,6 +2,7 @@
 #-*- coding: UTF-8
 from xbmcjson import XBMC, PLAYER_VIDEO
 from Tkinter import *
+from PIL import ImageTk, Image
 import ConfigParser, Image, ImageTk
 
 def goUp(event):
@@ -44,6 +45,7 @@ def Fullscreen(event):
 def ShowOSD(event):
     xbmc.Input.ShowOSD()
 
+
 def main(host, login, passwd):
     # Initialisation de la fenêtre d'affichage
     root = Tk()
@@ -55,6 +57,13 @@ def main(host, login, passwd):
     root.title('Remote Control for Kodi/XBMC')
     root.geometry('600x336')
     
+    image = Image.open("kodi.jpg") 
+    photo = ImageTk.PhotoImage(image) 
+ 
+    canvas = Canvas() 
+    canvas.create_image(200,500, image=photo)
+    canvas.pack() 
+
     running = Label(root, text="Pymote is running ...")
     running.pack()
 
@@ -83,7 +92,7 @@ def register(config, host_var, user_var, pass_var, root):
     config.set('config', 'host', host_var.get())
     config.write(config_file)
     config_file.close()
-    root.quit()
+    root.destroy()
 
 def Intercepte():
     sys.exit()
@@ -129,6 +138,7 @@ if __name__ == "__main__":
     login = config.get('config', 'login')
     passwd = config.get('config', 'passwd')
 
-    intro(host, login, passwd, config)
+    while 1:
+        intro(host, login, passwd, config)
 
-    main(host, login, passwd)
+        main(host, login, passwd)
