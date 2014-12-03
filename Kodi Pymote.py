@@ -12,7 +12,7 @@ def goDown(event):
 def goRight(event):
     xbmc.Input.Right()
 def goLeft(event):
-    xbmc.Input.Letf()
+    xbmc.Input.Left()
 def goHome(event):
     xbmc.Input.Home()
 def Select(event):
