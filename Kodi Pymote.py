@@ -56,13 +56,7 @@ def main(host, login, passwd):
 
     root.title('Remote Control for Kodi/XBMC')
     root.geometry('600x336')
-    
-    image = Image.open("kodi.jpg") 
-    photo = ImageTk.PhotoImage(image) 
- 
-    canvas = Canvas() 
-    canvas.create_image(200,500, image=photo)
-    canvas.pack() 
+
 
     running = Label(root, text="Pymote is running ...")
     running.pack()
