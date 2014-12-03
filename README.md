@@ -7,11 +7,9 @@ Remote control of Kodi with your desktop. Use your keyboard to control it.
 How to use ?
 ------------
 
-Write informations about your KodiCenter into config.txt.<br />
-
 Run :
 <code>
-python command.py
+python Kodi-Pymote.py
 </code>
 
 
