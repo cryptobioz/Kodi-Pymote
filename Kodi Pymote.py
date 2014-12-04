@@ -5,10 +5,13 @@ from Tkinter import *
 import ConfigParser
 
 def goUp(event):
+    global xbmc
     xbmc.Input.Up()
 def goDown(event):
+    global xbmc
     xbmc.Input.Down()
 def goRight(event):
+    global xbmc
     xbmc.Input.Right()
 def goLeft(event):
     xbmc.Input.Left()
@@ -51,6 +54,7 @@ def ShowOSD(event):
 def main(host, login, passwd):
     # Initialisation de la fenêtre d'affichage
     root = Tk()
+    global xbmc
     xbmc = XBMC("http://"+host+"/jsonrpc", login, passwd)
 
     
@@ -137,7 +141,6 @@ def intro(host, login, passwd, config):
 
 if __name__ == "__main__":
 
-    global xbmc
     global mute
     global fullscreen
     mute = 0
