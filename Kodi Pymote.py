@@ -61,6 +61,7 @@ def main(host, login, passwd):
 
     root.title('Remote Control for Kodi/XBMC')
     root.geometry('600x336')
+<<<<<<< HEAD
     if c == 1:
         running = Label(root, text="Can't find the MediaCenter.")
         running.pack()
@@ -82,6 +83,29 @@ def main(host, login, passwd):
         root.bind("s", Stop)
         root.bind('f', Fullscreen)
         root.bind("<Tab>", ShowOSD)
+=======
+
+
+    running = Label(root, text="Pymote is running ...")
+    running.pack()
+
+    mute = 0
+    fullscreen = 0
+    # Boucle d'évènements
+    root.bind("<Up>", goUp)
+    root.bind("<Down>", goDown)
+    root.bind("<Right>", goRight)
+    root.bind("<Left>", goLeft)
+    root.bind("<Escape>", goHome)
+    root.bind("<Return>", Select)
+    root.bind("<BackSpace>", goBack)
+    root.bind("c", ContextMenu)
+    root.bind("<space>", Play_Pause)
+    root.bind("m", Mute)
+    root.bind("s", Stop)
+    root.bind('f', Fullscreen)
+    root.bind("<Tab>", ShowOSD)
+>>>>>>> FETCH_HEAD
 
     root.mainloop()
 
