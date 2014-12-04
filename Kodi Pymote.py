@@ -51,6 +51,7 @@ def ShowOSD(event):
 def main(host, login, passwd):
     # Initialisation de la fenêtre d'affichage
     root = Tk()
+    xbmc = XBMC("http://"+host+"/jsonrpc", login, passwd)
 
     
     try:
@@ -135,20 +136,20 @@ def intro(host, login, passwd, config):
     
 
 if __name__ == "__main__":
-    config = ConfigParser.RawConfigParser(allow_no_value=False)
-    config.read("config.txt")
-    host = config.get('config', 'host')
-    login = config.get('config', 'login')
-    passwd = config.get('config', 'passwd')
 
     global xbmc
     global mute
     global fullscreen
-    xbmc = XBMC("http://"+host+"/jsonrpc", login, passwd)
     mute = 0
     fullscreen = 0
 
     while 1:
+        config = ConfigParser.RawConfigParser(allow_no_value=False)
+        config.read("config.txt")
+        host = config.get('config', 'host')
+        login = config.get('config', 'login')
+        passwd = config.get('config', 'passwd')
+
         intro(host, login, passwd, config)
 
         main(host, login, passwd)
