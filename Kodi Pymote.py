@@ -2,8 +2,7 @@
 #-*- coding: UTF-8
 from xbmcjson import XBMC, PLAYER_VIDEO
 from Tkinter import *
-from PIL import ImageTk, Image
-import ConfigParser, Image, ImageTk
+import ConfigParser
 
 def goUp(event):
     xbmc.Input.Up()
@@ -12,7 +11,7 @@ def goDown(event):
 def goRight(event):
     xbmc.Input.Right()
 def goLeft(event):
-    xbmc.Input.Letf()
+    xbmc.Input.Left()
 def goHome(event):
     xbmc.Input.Home()
 def Select(event):
@@ -24,19 +23,22 @@ def ContextMenu(event):
 def Play_Pause(event):
     xbmc.Player.PlayPause([PLAYER_VIDEO])
 def Mute(event):
-    if m == 0:
-        m = 1
+    global mute
+    if mute == 0:
+        mute = 1
         xbmc.Application.SetMute({"mute":True})
     else:
-        m = 0
+        mute = 0
         xbmc.Application.SetMute({"mute":False})
 
 def Stop(event):
     xbmc.Player.Stop([PLAYER_VIDEO])
 
 def Fullscreen(event):
+    global fullscreen
     if fullscreen == 0:
         fullscreen = 1
+        print "OK"
         xbmc.GUI.SetFullscreen({"fullscreen":True})
     else:
         fullscreen = 0
@@ -50,39 +52,36 @@ def main(host, login, passwd):
     # Initialisation de la fenêtre d'affichage
     root = Tk()
 
-    global xbmc, fullscreen
-    xbmc = XBMC("http://"+host+"/jsonrpc", login, passwd)
     
+    try:
+        xbmc.JSONRPC.Ping()
+        c = 0
+    except:
+        c = 1
 
     root.title('Remote Control for Kodi/XBMC')
     root.geometry('600x336')
-    
-    image = Image.open("kodi.jpg") 
-    photo = ImageTk.PhotoImage(image) 
- 
-    canvas = Canvas() 
-    canvas.create_image(200,500, image=photo)
-    canvas.pack() 
-
-    running = Label(root, text="Pymote is running ...")
-    running.pack()
-
-    mute = 0
-    fullscreen = 0
-    # Boucle d'évènements
-    root.bind("<Up>", goUp)
-    root.bind("<Down>", goDown)
-    root.bind("<Right>", goRight)
-    root.bind("<Left>", goLeft)
-    root.bind("<Escape>", goHome)
-    root.bind("<Return>", Select)
-    root.bind("<BackSpace>", goBack)
-    root.bind("c", ContextMenu)
-    root.bind("<space>", Play_Pause)
-    root.bind("m", Mute)
-    root.bind("s", Stop)
-    root.bind('f', Fullscreen)
-    root.bind("<Tab>", ShowOSD)
+    if c == 1:
+        running = Label(root, text="Can't find the MediaCenter.")
+        running.pack()
+    else:
+        xbmc.GUI.ShowNotification(title="Kodi-Pymote", message = "Connection established")
+        running = Label(root, text="Pymote is running ...")
+        running.pack()
+        # Boucle d'évènements
+        root.bind("<Up>", goUp)
+        root.bind("<Down>", goDown)
+        root.bind("<Right>", goRight)
+        root.bind("<Left>", goLeft)
+        root.bind("<Escape>", goHome)
+        root.bind("<Return>", Select)
+        root.bind("<BackSpace>", goBack)
+        root.bind("c", ContextMenu)
+        root.bind("<space>", Play_Pause)
+        root.bind("m", Mute)
+        root.bind("s", Stop)
+        root.bind('f', Fullscreen)
+        root.bind("<Tab>", ShowOSD)
 
     root.mainloop()
 
@@ -137,6 +136,13 @@ if __name__ == "__main__":
     host = config.get('config', 'host')
     login = config.get('config', 'login')
     passwd = config.get('config', 'passwd')
+
+    global xbmc
+    global mute
+    global fullscreen
+    xbmc = XBMC("http://"+host+"/jsonrpc", login, passwd)
+    mute = 0
+    fullscreen = 0
 
     while 1:
         intro(host, login, passwd, config)
