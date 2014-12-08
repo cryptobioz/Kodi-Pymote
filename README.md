@@ -83,3 +83,5 @@ Download :
 ----------
 
 <a href="http://exadot.fr/files/Kodi-Pymote%20-%20Mac%20OSX.zip">Mac OSX</a>
+<br />
+<a href="http://exadot.fr/files/Kodi-Pymote%20-%20Windows.zip">Windows</a>
